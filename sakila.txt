@@ -9,4 +9,10 @@
 9.  SELECT * FROM film WHERE length=(SELECT MAX(length) FROM film);
 10. SELECT * FROM film WHERE special_features like '%Deleted Scenes%';
 11. SELECT * FROM actor GROUP BY last_name HAVING COUNT(*) <= 1 ORDER BY last_name DESC;
-12. 
+12. SELECT last_name, COUNT(*) AS magnitude FROM actor GROUP BY last_name HAVING COUNT(*) > 1 ORDER BY magnitude DESC;
+13. SELECT actor_id, COUNT(*) AS magnitude FROM film_actor GROUP BY actor_id ORDER BY magnitude DESC LIMIT 1;
+14. SELECT film_id FROM film WHERE title='Academy Dinosaur';
+SELECT inventory_id FROM inventory WHERE film_id=(SELECT film_id FROM film WHERE title='Academy Dinosaur');
+SELECT * FROM rental WHERE inventory_id=(SELECT inventory_id FROM inventory WHERE film_id=(SELECT film_id FROM film WHERE title='Academy Dinosaur') GROUP BY film_id);
+SELECT * FROM film
+JOIN inventory ON film.film_id=inventory.film_id LIMIT 10;
