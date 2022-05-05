@@ -1,0 +1,13 @@
+1.  SELECT COUNT(name) AS number_of_USA_cities FROM city WHERE CountryCode='USA';
+2.  SELECT name, population, lifeExpectancy FROM country WHERE name='Argentina';
+3.  SELECT name, lifeExpectancy FROM country ORDER BY lifeExpectancy IS NOT NULL DESC LIMIT 1;
+4.  SELECT city.name FROM city JOIN country on city.id=country.capital WHERE country.name='Spain';
+5.  SELECT countrylanguage.language FROM countrylanguage JOIN country on countrylanguage.CountryCode=country.code WHERE country.region='Southeast Asia' GROUP BY countrylanguage.language;
+6.  SELECT name FROM city WHERE name LIKE 'F%'
+7.  SELECT COUNT(city.name) AS number_of_cities_China FROM city JOIN country on city.CountryCode=country.code WHERE country.name='CHINA';
+8.  SELECT name, population FROM country ORDER BY population IS NOT NULL ASC LIMIT 1;
+9.  SELECT COUNT(name) FROM country;
+10. SELECT name FROM country ORDER BY surfacearea DESC LIMIT 10;
+11. SELECT name FROM city WHERE CountryCode=(SELECT code FROM country WHERE name='Japan') ORDER BY population DESC LIMIT 5;
+12. SELECT name, code FROM country WHERE headofstate='Elisabeth II';
+13. 
