@@ -10,4 +10,11 @@
 10. SELECT name FROM country ORDER BY surfacearea DESC LIMIT 10;
 11. SELECT name FROM city WHERE CountryCode=(SELECT code FROM country WHERE name='Japan') ORDER BY population DESC LIMIT 5;
 12. SELECT name, code FROM country WHERE headofstate='Elisabeth II';
-13. 
+13. SELECT name , population/surfacearea AS population_to_area_ratio FROM country WHERE population !=0 ORDER BY population_to_area_ratio ASC LIMIT 10;
+14. SELECT DISTINCT language FROM countrylanguage;
+15. SELECT name, gnp FROM country ORDER BY gnp DESC LIMIT 10;
+16. SELECT country.name, COUNT(countrylanguage.language) AS number_of_languages_spoken FROM countrylanguage JOIN country on countrylanguage.CountryCode=country.code GROUP BY country.name ORDER BY number_of_languages_spoken DESC LIMIT 10;
+17. SELECT country.name, countrylanguage.percentage FROM countrylanguage JOIN country on countrylanguage.CountryCode=country.code WHERE language='german' AND percentage > 50;
+18. SELECT name, lifeExpectancy FROM country WHERE lifeExpectancy !=0 ORDER BY lifeExpectancy ASC LIMIT 1;
+19. SELECT GovernmentForm , COUNT(GovernmentForm ) AS GovernmentForm_frequency FROM country GROUP BY GovernmentForm  ORDER BY GovernmentForm_frequency DESC LIMIT 3;
+20. SELECT COUNT(IndepYear) FROM country WHERE IndepYear IS NOT NULL;
