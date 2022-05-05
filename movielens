@@ -1,1 +1,5 @@
-1.  
+1. SELECT title, release_date FROM movies WHERE YEAR(release_date) BETWEEN '1983' AND '1993' ORDER BY release_date DESC;
+2. CREATE TABLE IF NOT EXISTS avg_table SELECT movies.title , AVG(rating) AS avg_rating FROM ratings JOIN movies on ratings.movie_id=movies.id GROUP BY movies.id; SELECT * FROM avg_table WHERE avg_rating=(SELECT MIN(avg_rating) FROM avg_table);
+3. SELECT DISTINCT movies.title FROM ratings JOIN users on ratings.user_id=users.id JOIN movies on ratings.movie_id=movies.id JOIN occupations on occupations.id=users.occupation_id WHERE users.age=24 AND occupations.name='student' AND ratings.rating=5;
+4. SELECT DISTINCT title,release_date FROM movies WHERE release_date=(SELECT release_date FROM movies GROUP BY release_date ORDER BY COUNT(release_date) DESC LIMIT 1);
+5. SELECT genres.name, COUNT(genres.name) AS num_movies_in_genre FROM genres JOIN genres_movies on genres.id=genres_movies.genre_id GROUP BY genres.name ORDER BY num_movies_in_genre ASC;
