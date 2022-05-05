@@ -11,7 +11,7 @@
 11. SELECT * FROM actor GROUP BY last_name HAVING COUNT(*) <= 1 ORDER BY last_name DESC;
 12. SELECT last_name, COUNT(*) AS magnitude FROM actor GROUP BY last_name HAVING COUNT(*) > 1 ORDER BY magnitude DESC;
 13. SELECT actor_id, COUNT(*) AS magnitude FROM film_actor GROUP BY actor_id ORDER BY magnitude DESC LIMIT 1;
-14. SELECT rental.return_date FROM rental JOIN inventory ON rental.inventory_id=inventory.inventory_id WHERE film_id=(SELECT film_id FROM film WHERE title='Academy Dinosaur');
+14. SELECT rental.return_date, inventory.film_id, inventory.inventory_id FROM rental JOIN inventory ON rental.inventory_id=inventory.inventory_id WHERE film_id=(SELECT film_id FROM film WHERE title='Academy Dinosaur');
 15. SELECT AVG(length) FROM film;
 16. SELECT category, AVG(length) FROM film_list GROUP BY category;
 17. SELECT title FROM film_list WHERE description LIKE '%robot%';
