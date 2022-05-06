@@ -3,3 +3,4 @@
 3. SELECT DISTINCT movies.title FROM ratings JOIN users on ratings.user_id=users.id JOIN movies on ratings.movie_id=movies.id JOIN occupations on occupations.id=users.occupation_id WHERE users.age=24 AND occupations.name='student' AND ratings.rating=5;
 4. SELECT DISTINCT title,release_date FROM movies WHERE release_date=(SELECT release_date FROM movies GROUP BY release_date ORDER BY COUNT(release_date) DESC LIMIT 1);
 5. SELECT genres.name, COUNT(genres.name) AS num_movies_in_genre FROM genres JOIN genres_movies on genres.id=genres_movies.genre_id GROUP BY genres.name ORDER BY num_movies_in_genre ASC;
+2 'WITH OUT CREATING A TABLE (ALL ONE QUERY)'. SELECT * FROM (SELECT movies.title , AVG(rating) AS avg_rating FROM ratings JOIN movies on ratings.movie_id=movies.id GROUP BY movies.id) sub WHERE avg_rating=(SELECT MIN(avg_rating) FROM (SELECT movies.title , AVG(rating) AS avg_rating FROM ratings JOIN movies on ratings.movie_id=movies.id GROUP BY movies.id) sub );
