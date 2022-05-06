@@ -23,3 +23,5 @@
 23. SELECT name FROM language ORDER BY name DESC;
 24. SELECT first_name, last_name FROM actor WHERE last_name like '%son' ORDER BY first_name ASC;
 25. SELECT category, COUNT(*) AS magnitude FROM film_list GROUP BY category ORDER BY magnitude DESC LIMIT 1;
+14 ('UPDATED').SELECT MAX(rental_date) +  interval 6 day AS due_date FROM rental WHERE inventory_id=(SELECT inventory.inventory_id FROM rental JOIN inventory ON rental.inventory_id=inventory.inventory_id WHERE film_id=(SELECT film_id FROM film WHERE title='Academy Dinosaur') AND rental.return_date IS NULL) GROUP BY inventory_id;
+
